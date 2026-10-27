@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+
+<title>Kesavan R | Firmware & Embedded Systems Portfolio</title>
+
+<meta name="description"
+content="Kesavan R's portfolio covering Embedded C, STM32 microcontrollers, firmware development, peripheral interfacing, and electronics engineering.">
+
+<style>
+:root {
+    --bg: #080d18;
+    --panel: #101a2b;
+    --cyan: #00e5ff;
+    --blue: #58a6ff;
+    --purple: #a78bfa;
+    --green: #34d399;
+    --orange: #fb923c;
+    --pink: #f472b6;
+    --text: #eef6ff;
+    --muted: #a4b2c8;
+    --border: rgba(113, 180, 220, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+section {
+    padding: 90px 0;
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--cyan);
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.accent {
+    color: var(--cyan);
+}
+
+/* BACKGROUND PARTICLES */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* NAVIGATION */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(8, 13, 24, 0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    width: min(1120px, 92%);
+    margin: auto;
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #f2f7ff;
+    white-space: nowrap;
+}
+
+.logo-accent {
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 19px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.menu-toggle {
+    display: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--cyan);
+    padding: 7px 11px;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 9px;
+    border: 1px solid var(--cyan);
+    background: var(--cyan);
+    color: #06101a;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.25);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--cyan);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 130px 0 80px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    letter-spacing: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    color: var(--muted);
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* PROFILE CARD */
+
+.profile-card {
+    min-height: 390px;
+    padding: 30px 20px;
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at top, #173c5c, transparent 65%),
+        linear-gradient(145deg, #14243a, #0b1220);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(0, 229, 255, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.profile-circle {
+    width: 160px;
+    height: 160px;
+    border: 2px solid var(--cyan);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--cyan);
+    background: radial-gradient(circle, #173c5c, #07101d);
+    box-shadow: 0 0 35px rgba(0, 229, 255, 0.25);
+    animation: float 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.profile-card h3 {
+    margin-top: 22px;
+    font-size: 25px;
+    z-index: 1;
+}
+
+.profile-role {
+    color: var(--cyan);
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    z-index: 1;
+}
+
+.profile-status {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7cf7b4;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    z-index: 1;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7cf7b4;
+    box-shadow: 0 0 12px #7cf7b4;
+}
+
+.profile-tech {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    z-index: 1;
+}
+
+.profile-tech span {
+    padding: 6px 10px;
+    border-radius: 7px;
+    background: #112b40;
+    border: 1px solid #17647a;
+    color: #a5f3fc;
+    font-size: 11px;
+}
+
+/* GENERAL CARDS */
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 28px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 229, 255, 0.65);
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 14px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 25px;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    padding: 25px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #101a2b, #0c1422);
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.07);
+}
+
+.skill-card h3 {
+    color: var(--cyan);
+    margin-bottom: 16px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.tag {
+    padding: 6px 11px;
+    font-size: 12px;
+    color: #ccefff;
+    background: #142c43;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 7px;
+    transition: 0.25s;
+}
+
+.tag:hover {
+    background: var(--cyan);
+    color: #06101a;
+    transform: translateY(-2px);
+}
+
+/* STM32 LAB */
+
+.mcu-lab {
+    background:
+        radial-gradient(ellipse at 10% 20%, #102f5c 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 80%, #30154d 0%, transparent 40%),
+        #080d18;
+}
+
+.mcu-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.mcu-heading h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    background: linear-gradient(90deg, #00e5ff, #7c83ff, #f472b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.mcu-heading p {
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+.mcu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+    align-items: center;
+}
+
+.mcu-board {
+    position: relative;
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 22px;
+    background:
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        #091522;
+    background-size: 25px 25px;
+    overflow: hidden;
+}
+
+.mcu-chip {
+    width: 195px;
+    height: 250px;
+    border: 2px solid #00e5ff;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #153e65, #080d18);
+    box-shadow: 0 0 35px rgba(0, 229, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    animation: chipGlow 3s infinite alternate;
+}
+
+.mcu-chip svg {
+    width: 65px;
+    height: 65px;
+    color: #6ceaff;
+    margin-bottom: 12px;
+}
+
+.mcu-chip h3 {
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.mcu-chip p {
+    font-size: 10px;
+    color: #9bc8e8;
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+
+.mcu-pins {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2;
+}
+
+.mcu-pins.left {
+    left: 7px;
+}
+
+.mcu-pins.right {
+    right: 7px;
+}
+
+.mcu-pin {
+    cursor: pointer;
+    padding: 8px 7px;
+    background: #0b2032;
+    color: #bfefff;
+    border: 1px solid #2c779b;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.mcu-pin:hover,
+.mcu-pin.active {
+    background: linear-gradient(135deg, #00e5ff, #7c83ff);
+    color: #07101d;
+    border-color: white;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+}
+
+.mcu-details {
+    padding: 28px;
+    border: 1px solid rgba(124, 131, 255, 0.5);
+    border-radius: 20px;
+    background: linear-gradient(145deg, #121e37, #101323);
+}
+
+.mcu-details h3 {
+    color: var(--cyan);
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.mcu-details p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.mcu-details h4 {
+    color: #c4b5fd;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+.mcu-code {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #03080e;
+    border: 1px solid rgba(89, 225, 237, 0.2);
+    border-left: 3px solid #34d399;
+    color: #86efac;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-x: auto;
+}
+
+.mcu-peripherals {
+    max-width: 1100px;
+    margin: 30px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.peripheral {
+    padding: 22px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.peripheral:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.08);
+}
+
+.peripheral h3 {
+    margin-bottom: 10px;
+}
+
+.peripheral p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.mcu-peripherals .peripheral:nth-child(1) {
+    border-top: 3px solid #00e5ff;
+}
+
+.mcu-peripherals .peripheral:nth-child(2) {
+    border-top: 3px solid #a78bfa;
+}
+
+.mcu-peripherals .peripheral:nth-child(3) {
+    border-top: 3px solid #34d399;
+}
+
+.mcu-peripherals .peripheral:nth-child(4) {
+    border-top: 3px solid #fb923c;
+}
+
+.mcu-peripherals .peripheral:nth-child(1) h3 {
+    color: #00e5ff;
+}
+
+.mcu-peripherals .peripheral:nth-child(2) h3 {
+    color: #a78bfa;
+}
+
+.mcu-peripherals .peripheral:nth-child(3) h3 {
+    color: #34d399;
+}
+
+.mcu-peripherals .peripheral:nth-child(4) h3 {
+    color: #fb923c;
+}
+
+.mcu-journey {
+    margin-top: 65px;
+}
+
+/* PROJECTS */
+
+.project-card {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 28px;
+    align-items: center;
+}
+
+.project-visual {
+    min-height: 240px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background:
+        radial-gradient(circle at top right, #4338ca, transparent 60%),
+        linear-gradient(135deg, #143c5c, #101a2b);
+    color: var(--cyan);
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px;
+}
+
+.project-content h3 {
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+/* EXPERIENCE AND EDUCATION */
+
+.timeline {
+    max-width: 850px;
+    margin: auto;
+    border-left: 2px solid var(--cyan);
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(16, 26, 43, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    top: 27px;
+    width: 13px;
+    height: 13px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+.timeline-item h3 {
+    color: var(--cyan);
+}
+
+.timeline-item p {
+    color: var(--muted);
+}
+
+.date {
+    display: inline-block;
+    margin: 8px 0;
+    color: var(--blue);
+    font-size: 13px;
+}
+
+/* LEARNING HUB */
+
+.learning-hub {
+    background:
+        radial-gradient(ellipse at 50% 0%, #132c4a, transparent 65%);
+}
+
+.video-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    margin-bottom: 18px;
+    font-size: 23px;
+    background: #123047;
+    color: var(--cyan);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.video-card:nth-child(2) .video-icon {
+    color: var(--purple);
+    background: #241d42;
+}
+
+.video-card:nth-child(3) .video-icon {
+    color: var(--green);
+    background: #12372e;
+}
+
+.video-card h3 {
+    margin-bottom: 12px;
+}
+
+.video-card p {
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* CONTACT */
+
+.contact-box {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 45px 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, #14243a, #0b1220);
+}
+
+.contact-box h3 {
+    font-size: 25px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    margin: 15px 0 25px;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.contact-email {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--cyan);
+    overflow-wrap: anywhere;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 25px 15px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes chipGlow {
+    from {
+        box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    to {
+        box-shadow: 0 0 35px rgba(0, 229, 255, 0.5);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s, transform 0.65s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-content,
+    .about-grid,
+    .mcu-container,
+    .project-card {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        gap: 35px;
+    }
+
+    .profile-card {
+        max-width: 450px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mcu-peripherals {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        min-height: 68px;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        background: #0b1220;
+        border: 1px solid var(--border);
+        border-radius: 0 0 12px 12px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .mcu-board {
+        min-height: 350px;
+    }
+
+    .mcu-chip {
+        width: 150px;
+        height: 205px;
+    }
+
+    .mcu-pins.left {
+        left: 4px;
+    }
+
+    .mcu-pins.right {
+        right: 4px;
+    }
+
+    .mcu-pin {
+        padding: 7px 4px;
+        font-size: 9px;
+    }
+
+    .mcu-peripherals {
+        grid-template-columns: 1fr;
+    }
+
+    .mcu-details {
+        padding: 20px;
+    }
+
+    .profile-card {
+        padding: 25px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- NAVIGATION -->
+
+<header>
+    <nav class="navbar">
+
+        <a class="logo" href="#home">
+            KESAVAN<span class="logo-accent">.</span>
+        </a>
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#microcontroller">STM32 Lab</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#learning-videos">Learning Hub</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div>
+
+            <p class="eyebrow">
+                Electronics · Firmware · Embedded Systems
+            </p>
+
+            <h1>
+                Hi, I'm <span class="accent">Kesavan R</span>
+            </h1>
+
+            <h2>Electronics & Communication Engineer</h2>
+
+            <p class="hero-description">
+                An Electronics and Communication Engineering graduate
+                developing practical skills in Embedded C, STM32
+                microcontrollers, peripheral interfacing, and PCB Design.
+                Interested in firmware development and building reliable
+                hardware-oriented solutions.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#microcontroller" class="btn">
+                    Explore STM32 Lab
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="profile-card">
+
+            <div class="profile-circle">ER</div>
+
+            <h3>Kesavan R</h3>
+
+            <p class="profile-role">
+                Firmware / Embedded Engineer
+            </p>
+
+            <div class="profile-status">
+                <span class="status-dot"></span>
+                EMBEDDED SYSTEMS
+            </div>
+
+            <div class="profile-tech">
+                <span>STM32</span>
+                <span>Embedded C</span>
+                <span>ARM Cortex-M</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>A little about my background and interests</p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="card">
+
+                <h3>My Profile</h3>
+
+                <p>
+                    I have completed my B.E. in Electronics and
+                    Communication Engineering and am currently pursuing
+                    Embedded Systems training. My learning focuses on
+                    C programming, microcontroller architecture, GPIO,
+                    ADC, UART, SPI, I2C, and peripheral interfacing.
+                    I am also preparing to learn PCB Design.
+                </p>
+
+                <br>
+
+                <p>
+                    My goal is to strengthen my practical engineering
+                    knowledge by developing, testing, and understanding
+                    embedded applications.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Quick Information</h3>
+
+                <ul class="info-list">
+                    <li><strong>Degree:</strong> B.E. ECE</li>
+                    <li><strong>Focus:</strong> Embedded Systems</li>
+                    <li><strong>Programming:</strong> C, Embedded C</li>
+                    <li><strong>Microcontroller:</strong> STM32</li>
+                    <li><strong>Upcoming:</strong> PCB Design</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Technical Skills</h2>
+            <p>Technologies and tools I am learning and using</p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>Programming</h3>
+
+                <div class="tags">
+                    <span class="tag">C</span>
+                    <span class="tag">Embedded C</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">C++ Fundamentals</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Microcontrollers</h3>
+
+                <div class="tags">
+                    <span class="tag">STM32F103C8T6</span>
+                    <span class="tag">STM32F401VE</span>
+                    <span class="tag">STM32F446RE</span>
+                    <span class="tag">Arduino</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Communication</h3>
+
+                <div class="tags">
+                    <span class="tag">UART / USART</span>
+                    <span class="tag">SPI</span>
+                    <span class="tag">I2C</span>
+                    <span class="tag">ADC</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Hardware</h3>
+
+                <div class="tags">
+                    <span class="tag">GPIO</span>
+                    <span class="tag">LCD Interfacing</span>
+                    <span class="tag">Sensors</span>
+                    <span class="tag">Timers</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Development Tools</h3>
+
+                <div class="tags">
+                    <span class="tag">STM32CubeIDE</span>
+                    <span class="tag">Proteus</span>
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Linux</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Professional Skills</h3>
+
+                <div class="tags">
+                    <span class="tag">SAP</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">Data Entry</span>
+                    <span class="tag">Scrap Analysis</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STM32 MICROCONTROLLER LAB -->
+
+<section class="mcu-lab" id="microcontroller">
+
+    <div class="container">
+
+        <div class="mcu-heading">
+            <h2>STM32 Microcontroller Lab</h2>
+
+            <p>
+                Explore STM32 pins, peripheral functions,
+                communication protocols, and Embedded C concepts.
+            </p>
+        </div>
+
+        <div class="mcu-container">
+
+            <div class="mcu-board">
+
+                <div class="mcu-pins left">
+
+                    <button class="mcu-pin"
+                        data-title="PA0 — ADC Input"
+                        data-description="PA0 can be configured as an analogue input for ADC1 on STM32F103C8T6. With the ADC configured, firmware can sample a suitable sensor or potentiometer voltage. Keep the input within the permitted voltage range.">
+                        PA0 / ADC
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="PA9 — USART1 TX"
+                        data-description="PA9 can act as USART1 transmit. Configure the clock, GPIO alternate-function output, baud rate, and USART settings before sending serial data to a compatible terminal.">
+                        PA9 / TX
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="PA10 — USART1 RX"
+                        data-description="PA10 can act as USART1 receive. Connect it to the transmitting device's TX signal and configure the USART receive function. The devices must use compatible serial settings and a common ground.">
+                        PA10 / RX
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="PB6 — I2C1 SCL"
+                        data-description="PB6 can be used for I2C1 clock on STM32F103C8T6. The I2C clock coordinates data transfer between the controller and compatible peripherals. I2C lines normally need suitable pull-up resistors.">
+                        PB6 / SCL
+                    </button>
+
+                </div>
+
+                <div class="mcu-chip">
+
+                    <svg viewBox="0 0 100 100"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         aria-label="Microcontroller illustration">
+
+                        <rect x="20" y="20" width="60" height="60" rx="6"/>
+                        <rect x="31" y="31" width="38" height="38" rx="3"/>
+
+                        <path d="
+                            M40 42H60
+                            M40 50H60
+                            M40 58H60
+                            M8 30H20
+                            M8 40H20
+                            M8 50H20
+                            M8 60H20
+                            M80 30H92
+                            M80 40H92
+                            M80 50H92
+                            M80 60H92
+                        "/>
+
+                    </svg>
+
+                    <h3>STM32</h3>
+                    <p>STM32F103C8T6</p>
+                    <p>ARM CORTEX-M3</p>
+
+                </div>
+
+                <div class="mcu-pins right">
+
+                    <button class="mcu-pin"
+                        data-title="PB7 — I2C1 SDA"
+                        data-description="PB7 can be used for I2C1 data on STM32F103C8T6. It carries address and data information during I2C communication. Configure the peripheral correctly and provide suitable pull-ups on the bus.">
+                        PB7 / SDA
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="GPIO — Digital Input / Output"
+                        data-description="GPIO pins allow firmware to read digital inputs and control outputs such as LEDs. Configure each pin's mode, speed, and input/output settings before use.">
+                        GPIO
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="ADC — Analogue to Digital Converter"
+                        data-description="The ADC samples an analogue voltage and converts it into a digital result. On the STM32F103, the ADC is 12-bit, so a conversion result ranges from 0 to 4095.">
+                        ADC
+                    </button>
+
+                    <button class="mcu-pin"
+                        data-title="SPI — Serial Peripheral Interface"
+                        data-description="SPI supports synchronous communication with compatible displays, sensors, and memory devices. Depending on the peripheral and configuration, signals include SCK, MOSI, MISO, and a chip-select signal.">
+                        SPI
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="mcu-details">
+
+                <h3 id="mcu-title">STM32F103C8T6</h3>
+
+                <p id="mcu-description">
+                    The STM32F103C8T6 is a 32-bit microcontroller
+                    based on the ARM Cortex-M3 core. It executes
+                    firmware to read inputs, process data, and
+                    control connected hardware.
+                </p>
+
+                <h4>Embedded Development Workflow</h4>
+
+                <p>
+                    <strong style="color:#00e5ff;">01.</strong>
+                    Enable the required peripheral clock.
+                    <br>
+
+                    <strong style="color:#a78bfa;">02.</strong>
+                    Configure the GPIO pins and peripheral.
+                    <br>
+
+                    <strong style="color:#34d399;">03.</strong>
+                    Read inputs, process data, or transmit information.
+                    <br>
+
+                    <strong style="color:#fb923c;">04.</strong>
+                    Test and debug using hardware or Proteus.
+                </p>
+
+                <h4>Embedded C Concept</h4>
+
+                <div class="mcu-code">
+                    <span style="color:#7b91a8;">
+                        // Simplified firmware workflow
+                    </span><br>
+
+                    while (1)<br>
+                    {<br>
+                    &nbsp;&nbsp;read_input();<br>
+                    &nbsp;&nbsp;process_data();<br>
+                    &nbsp;&nbsp;control_output();<br>
+                    }
+                </div>
+
+                <p style="font-size:12px; margin-top:10px;">
+                    Conceptual example only. The function names above
+                    are placeholders, not complete STM32 firmware.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- PERIPHERAL CARDS -->
+
+        <div class="mcu-peripherals">
+
+            <div class="peripheral">
+                <h3>GPIO</h3>
+                <p>
+                    Configure pins, read buttons, control LEDs,
+                    and understand digital inputs and outputs.
+                </p>
+            </div>
+
+            <div class="peripheral">
+                <h3>ADC</h3>
+                <p>
+                    Convert analogue sensor voltages into digital
+                    values for firmware processing.
+                </p>
+            </div>
+
+            <div class="peripheral">
+                <h3>UART / USART</h3>
+                <p>
+                    Exchange serial messages between the STM32,
+                    a virtual terminal, or another controller.
+                </p>
+            </div>
+
+            <div class="peripheral">
+                <h3>SPI / I2C</h3>
+                <p>
+                    Communicate with compatible displays, sensors,
+                    memory, and other peripheral devices.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- DEVELOPMENT JOURNEY -->
+
+        <div class="mcu-journey">
+
+            <div class="section-title">
+                <h2>Embedded Development Journey</h2>
+                <p>
+                    Core concepts and practical areas of embedded development
+                </p>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3 style="color:#00e5ff;">
+                        01. GPIO Programming
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Configure input and output pins, control LEDs,
+                        read buttons, and understand GPIO registers.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">CRL / CRH</span>
+                        <span class="tag">IDR</span>
+                        <span class="tag">ODR</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color:#a78bfa;">
+                        02. ADC Interfacing
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Read analogue signals from a potentiometer
+                        or sensor and convert them into digital values.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">ADC1</span>
+                        <span class="tag">Sampling</span>
+                        <span class="tag">Conversion</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color:#34d399;">
+                        03. UART / USART
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Configure serial communication and exchange
+                        messages with a compatible virtual terminal.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">TX</span>
+                        <span class="tag">RX</span>
+                        <span class="tag">Baud Rate</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color:#fb923c;">
+                        04. I2C Communication
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Explore master/slave communication, device
+                        addressing, clock, and data lines.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">SCL</span>
+                        <span class="tag">SDA</span>
+                        <span class="tag">Addressing</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color:#f472b6;">
+                        05. SPI Communication
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Understand synchronous data transfer between
+                        microcontrollers and compatible peripherals.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">MOSI</span>
+                        <span class="tag">MISO</span>
+                        <span class="tag">SCK</span>
+                        <span class="tag">NSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color:#60a5fa;">
+                        06. Hardware Simulation
+                    </h3>
+
+                    <p style="color:#a4b2c8;">
+                        Build circuits, connect peripherals, test firmware,
+                        and troubleshoot hardware connections.
+                    </p>
+
+                    <div class="tags" style="margin-top:15px;">
+                        <span class="tag">Proteus</span>
+                        <span class="tag">STM32CubeIDE</span>
+                        <span class="tag">Debugging</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Projects</h2>
+            <p>Academic project experience</p>
+        </div>
+
+        <div class="card project-card">
+
+            <div class="project-visual">
+                DEEP LEARNING
+                <br>
+                +
+                <br>
+                MEDICAL IMAGING
+            </div>
+
+            <div class="project-content">
+
+                <h3>
+                    Deep Learning Based Automated Kidney Cancer Identification System
+                </h3>
+
+                <p>
+                    An academic project exploring deep learning and
+                    medical image processing to identify kidney cancer
+                    from CT scan images.
+                </p>
+
+                <p>
+                    Project activities included image preprocessing,
+                    segmentation, dataset analysis, model training,
+                    and evaluation.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Image Processing</span>
+                    <span class="tag">CT Scan Images</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LEARNING HUB -->
+
+<section class="learning-hub" id="learning-videos">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Embedded Learning Hub</h2>
+
+            <p>
+                Explore practical tutorials for microcontrollers
+                and firmware development.
+            </p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card video-card">
+
+                <div class="video-icon">▶</div>
+
+                <h3>STM32 Fundamentals</h3>
+
+                <p>
+                    Explore STM32 boards, microcontroller architecture,
+                    GPIO, and getting started with STM32CubeIDE.
+                </p>
+
+                <a class="btn btn-outline"
+                   href="https://www.youtube.com/results?search_query=STM32+beginner+tutorial+STM32CubeIDE"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Find Tutorials ↗
+                </a>
+
+            </div>
+
+            <div class="skill-card video-card">
+
+                <div class="video-icon">⌘</div>
+
+                <h3>Embedded C</h3>
+
+                <p>
+                    Learn about register programming, bitwise operations,
+                    pointers, memory-mapped registers, and firmware basics.
+                </p>
+
+                <a class="btn btn-outline"
+                   href="https://www.youtube.com/results?search_query=Embedded+C+microcontroller+tutorial"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Find Tutorials ↗
+                </a>
+
+            </div>
+
+            <div class="skill-card video-card">
+
+                <div class="video-icon">⚡</div>
+
+                <h3>Peripheral Interfacing</h3>
+
+                <p>
+                    Find demonstrations covering ADC, UART, SPI, I2C,
+                    LCD interfacing, and hardware debugging.
+                </p>
+
+                <a class="btn btn-outline"
+                   href="https://www.youtube.com/results?search_query=STM32+ADC+UART+SPI+I2C+tutorial"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Find Tutorials ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Work Experience</h2>
+            <p>Professional experience</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>Graduate Trainee — ZF Group</h3>
+
+                <span class="date">Graduate Trainee</span>
+
+                <p>
+                    Worked with SAP-related processes in the scrapyard
+                    department, supporting data entry, Microsoft Excel
+                    activities, and scrap analysis.
+                </p>
+
+                <div class="tags" style="margin-top:15px;">
+                    <span class="tag">SAP</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">Data Entry</span>
+                    <span class="tag">Scrap Analysis</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Education & Training</h2>
+            <p>Academic background and ongoing learning</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>B.E. Electronics and Communication Engineering</h3>
+
+                <p>AVS College of Technology, Salem</p>
+
+                <span class="date">2022 – 2026</span>
+
+                <p>CGPA: 7.8</p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h3>Embedded Systems Training</h3>
+
+                <p>
+                    Currently developing practical knowledge in C,
+                    Embedded C, STM32 microcontrollers, peripheral
+                    interfacing, and hardware debugging.
+                </p>
+
+                <span class="date">Ongoing</span>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h3>PCB Design Training</h3>
+
+                <p>
+                    Upcoming training to develop knowledge of printed
+                    circuit board design and hardware development.
+                </p>
+
+                <span class="date">Upcoming</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contact Me</h2>
+            <p>Let's connect and discuss opportunities</p>
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Interested in working together?</h3>
+
+            <p>
+                Feel free to contact me regarding embedded systems,
+                electronics, internships, and entry-level opportunities.
+            </p>
+
+            <div class="contact-links">
+
+                <a class="btn"
+                   href="mailto:kesavankrs0507@gmail.com?subject=Portfolio%20Contact">
+                    Send Email
+                </a>
+
+                <a class="btn btn-outline"
+                   href="https://www.linkedin.com/in/kesavan-r-891131279/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LinkedIn Profile
+                </a>
+
+            </div>
+
+            <a class="contact-email"
+               href="mailto:kesavankrs0507@gmail.com?subject=Portfolio%20Contact">
+                kesavankrs0507@gmail.com
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>
+        © <span id="year"></span> Kesavan R.
+        All rights Reserved.
+    </p>
+</footer>
+
+<script>
+/* MOBILE NAVIGATION */
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function () {
+
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+
+});
+
+document.querySelectorAll(".nav-links a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navLinks.classList.remove("open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+
+    });
+
+});
+
+/* INTERACTIVE STM32 PINS */
+
+const mcuPins = document.querySelectorAll(".mcu-pin");
+const mcuTitle = document.getElementById("mcu-title");
+const mcuDescription = document.getElementById("mcu-description");
+
+mcuPins.forEach(function (pin) {
+
+    pin.addEventListener("click", function () {
+
+        mcuPins.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        pin.classList.add("active");
+
+        mcuTitle.textContent =
+            pin.getAttribute("data-title");
+
+        mcuDescription.textContent =
+            pin.getAttribute("data-description");
+
+    });
+
+});
+
+/* SCROLL REVEAL ANIMATION */
+
+const revealElements = document.querySelectorAll(
+    ".card, .skill-card, .peripheral, .timeline-item, .project-card"
+);
+
+revealElements.forEach(function (element) {
+    element.classList.add("reveal");
+});
+
+if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(function (entries) {
+
+        entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.12
+    });
+
+    revealElements.forEach(function (element) {
+        observer.observe(element);
+    });
+
+} else {
+
+    revealElements.forEach(function (element) {
+        element.classList.add("visible");
+    });
+
+}
+
+/* ANIMATED BACKGROUND PARTICLES */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const count = Math.min(
+        65,
+        Math.floor(window.innerWidth / 20)
+    );
+
+    particles = [];
+
+    for (let i = 0; i < count; i++) {
+
+        particles.push({
+
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+
+            radius: Math.random() * 1.8 + 0.5
+
+        });
+
+    }
+
+}
+
+function animateParticles() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) {
+            p.vx *= -1;
+        }
+
+        if (p.y < 0 || p.y > canvas.height) {
+            p.vy *= -1;
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = "rgba(0, 229, 255, 0.65)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+
+            const other = particles[j];
+
+            const dx = p.x - other.x;
+            const dy = p.y - other.y;
+
+            const distance = Math.sqrt(
+                dx * dx + dy * dy
+            );
+
+            if (distance < 110) {
+
+                ctx.beginPath();
+
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(other.x, other.y);
+
+                ctx.strokeStyle =
+                    "rgba(0, 229, 255, " +
+                    (1 - distance / 110) * 0.16 +
+                    ")";
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+    requestAnimationFrame(animateParticles);
+
+}
+
+resizeCanvas();
+animateParticles();
+
+window.addEventListener("resize", resizeCanvas);
+
+/* FOOTER YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
